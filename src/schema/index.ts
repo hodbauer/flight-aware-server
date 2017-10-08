@@ -1,9 +1,10 @@
 import {makeExecutableSchema} from 'graphql-tools';
 import {resolvers} from '../resolvers';
 import {flightAwareTypeDefs} from './flight-aware.schema';
+import {customTypeDefs} from './custom.schema';
 
 const typeDefs =
-    flightAwareTypeDefs + `
+    flightAwareTypeDefs + customTypeDefs+ `
 type Query {
     AircraftType(type:String!):AircraftTypeStruct
     AirlineFlightSchedules(start_date:Int!, end_date:Int!, origin:String, destination:String, airline:String, flightno:String, exclude_codeshare:Boolean, howMany:Int, offset:Int):ArrayOfAirlineFlightScheduleStruct
@@ -28,10 +29,9 @@ type Query {
     WeatherConditions(airport_code:String!, weather_date:Int, temperature_units:String, return_nearby_weather:Boolean, howMany:Int, offset:Int):WeatherConditionsArrayStruct
     WeatherForecast(airport_code:String!, weather_date:Int, return_nearby_weather:Boolean):WeatherForecastStruct
     ZipcodeInfo(zipcode:String!):ZipcodeInfoStruct
+    
+    getDepartures(airportCode:String!):[Departures]
 }
-
-#type Query {
-#    flightAware:FlightAware
-#}`;
+`;
 
 export const schema = makeExecutableSchema({typeDefs, resolvers});

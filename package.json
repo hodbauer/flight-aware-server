@@ -22,6 +22,7 @@
   "homepage": "https://github.com/hodbauer/flight-aware-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "graphql": "^0.11.7",
     "graphql-server-express": "^1.1.3",

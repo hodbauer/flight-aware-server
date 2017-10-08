@@ -53,140 +53,102 @@ let base = {
     json: true
 };
 
-export async function AircraftType(root, qs:IAircraftType):Promise<AircraftTypeStruct> {
-    base.uri = fxmlUrl + 'AircraftType';
+async function flightAwareGateway<T>(qs:T, urlSuffix:string):Promise<any> {
+    base.uri = fxmlUrl + urlSuffix;
     base.qs = qs;
-    return (await rp.get(base)).AircraftTypeResult;
+    let result = await rp.get(base);
+    console.log({base, result});
+    return result;
+}
+
+export async function AircraftType(root, qs:IAircraftType):Promise<AircraftTypeStruct> {
+    return (await flightAwareGateway(qs, 'AircraftType')).AircraftTypeResult;
 }
 
 export async function AirlineFlightSchedules(root, qs:IAirlineFlightSchedules):Promise<ArrayOfAirlineFlightScheduleStruct> {
-    base.uri = fxmlUrl + 'AirlineFlightSchedules';
-    base.qs = qs;
-    return (await rp.get(base)).AirlineFlightSchedulesResult;
+    return (await flightAwareGateway(qs, 'AirlineFlightSchedules')).AirlineFlightSchedulesResult;
 }
 
 export async function AirlineInfo(root, qs:IAirlineInfo):Promise<AirlineInfoStruct> {
-    base.uri = fxmlUrl + 'AirlineInfo';
-    base.qs = qs;
-    return (await rp.get(base)).AirlineInfoResult;
+    return (await flightAwareGateway(qs, 'AirlineInfo')).AirlineInfoResult;
 }
 
 export async function AirportBoards(root, qs:IAirportBoards):Promise<AirportBoardsStruct> {
-    base.uri = fxmlUrl + 'AirportBoards';
-    base.qs = qs;
-    return (await rp.get(base)).AirportBoardsResult;
+    return (await flightAwareGateway(qs, 'AirportBoards')).AirportBoardsResult;
 }
 
 export async function AirportDelays(root, qs:IAirportDelays):Promise<AirportDelayStruct> {
-    base.uri = fxmlUrl + 'AirportDelays';
-    base.qs = qs;
-    return (await rp.get(base)).AirportDelaysResult;
+    return (await flightAwareGateway(qs, 'AirportDelays')).AirportDelaysResult;
 }
 
 export async function AirportInfo(root, qs:IAirportInfo):Promise<AirportStruct> {
-    base.uri = fxmlUrl + 'AirportInfo';
-    base.qs = qs;
-    return (await rp.get(base)).AirportInfoResult;
+    return (await flightAwareGateway(qs, 'AirportInfo')).AirportInfoResult;
 }
 
 export async function BlockIdentCheck(root, qs:IBlockIdentCheck):Promise<number> {
-    base.uri = fxmlUrl + 'BlockIdentCheck';
-    base.qs = qs;
-    return (await rp.get(base)).BlockIdentCheckResult;
+    return (await flightAwareGateway(qs, 'BlockIdentCheck')).BlockIdentCheckResult;
 }
 
 export async function CountAirportOperations(root, qs:ICountAirportOperations):Promise<CountAirportOperationsStruct> {
-    base.uri = fxmlUrl + 'CountAirportOperations';
-    base.qs = qs;
-    return (await rp.get(base)).CountAirportOperationsResult;
+    return (await flightAwareGateway(qs, 'CountAirportOperations')).CountAirportOperationsResult;
 }
 
 export async function CountAllEnrouteAirlineOperations(root, qs:ICountAllEnrouteAirlineOperations):Promise<ArrayOfCountAirlineOperationsStruct> {
-    base.uri = fxmlUrl + 'CountAllEnrouteAirlineOperations';
-    base.qs = qs;
-    return (await rp.get(base)).CountAllEnrouteAirlineOperationsResult;
+    return (await flightAwareGateway(qs, 'CountAllEnrouteAirlineOperations')).CountAllEnrouteAirlineOperationsResult;
 }
 
 export async function DecodeFlightRoute(root, qs:IDecodeFlightRoute):Promise<ArrayOfFlightRouteStruct> {
-    base.uri = fxmlUrl + 'DecodeFlightRoute';
-    base.qs = qs;
-    return (await rp.get(base)).DecodeFlightRouteResult;
+    return (await flightAwareGateway(qs, 'DecodeFlightRoute')).DecodeFlightRouteResult;
 }
 
 export async function DecodeRoute(root, qs:IDecodeRoute):Promise<ArrayOfFlightRouteStruct> {
-    base.uri = fxmlUrl + 'DecodeRoute';
-    base.qs = qs;
-    return (await rp.get(base)).DecodeRouteResult;
+    return (await flightAwareGateway(qs, 'DecodeRoute')).DecodeRouteResult;
 }
 
 export async function FindFlight(root, qs:IFindFlight):Promise<FindFlightStruct> {
-    base.uri = fxmlUrl + 'FindFlight';
-    base.qs = qs;
-    return (await rp.get(base)).FindFlightResult;
+    return (await flightAwareGateway(qs, 'FindFlight')).FindFlightResult;
 }
 
 export async function FlightCancellationStatistics(root, qs:IFlightCancellationStatistics):Promise<CancellationSummaryStruct> {
-    base.uri = fxmlUrl + 'FlightCancellationStatistics';
-    base.qs = qs;
-    return (await rp.get(base)).FlightCancellationStatisticsResult;
+    return (await flightAwareGateway(qs, 'FlightCancellationStatistics')).FlightCancellationStatisticsResult;
 }
 
 export async function FlightInfoStatus(root, qs:IFlightInfoStatus):Promise<ArrayOfFlightInfoStatusStruct> {
-    base.uri = fxmlUrl + 'FlightInfoStatus';
-    base.qs = qs;
-    return (await rp.get(base)).FlightInfoStatusResult;
+    return (await flightAwareGateway(qs, 'FlightInfoStatus')).FlightInfoStatusResult;
 }
 
 export async function GetFlightTrack(root, qs:IGetFlightTrack):Promise<ArrayOfTrackStruct> {
-    base.uri = fxmlUrl + 'GetFlightTrack';
-    base.qs = qs;
-    return (await rp.get(base)).GetFlightTrackResult;
+    return (await flightAwareGateway(qs, 'GetFlightTrack')).GetFlightTrackResult;
 }
 
 export async function LatLongsToDistance(root, qs:ILatLongsToDistance):Promise<number> {
-    base.uri = fxmlUrl + 'LatLongsToDistance';
-    base.qs = qs;
-    return (await rp.get(base)).LatLongsToDistanceResult;
+    return (await flightAwareGateway(qs, 'LatLongsToDistance')).LatLongsToDistanceResult;
 }
 
 export async function LatLongsToHeading(root, qs:ILatLongsToHeading):Promise<number> {
-    base.uri = fxmlUrl + 'LatLongsToHeading';
-    base.qs = qs;
-    return (await rp.get(base)).LatLongsToHeadingResult;
+    return (await flightAwareGateway(qs, 'LatLongsToHeading')).LatLongsToHeadingResult;
 }
 
 export async function NearbyAirports(root, qs:INearbyAirports):Promise<NearbyAirportsStruct> {
-    base.uri = fxmlUrl + 'NearbyAirports';
-    base.qs = qs;
-    return (await rp.get(base)).NearbyAirportsResult;
+    return (await flightAwareGateway(qs, 'NearbyAirports')).NearbyAirportsResult;
 }
 
 export async function RoutesBetweenAirports(root, qs:IRoutesBetweenAirports):Promise<ArrayOfRoutesBetweenAirportsStruct> {
-    base.uri = fxmlUrl + 'RoutesBetweenAirports';
-    base.qs = qs;
-    return (await rp.get(base)).RoutesBetweenAirportsResult;
+    return (await flightAwareGateway(qs, 'RoutesBetweenAirports')).RoutesBetweenAirportsResult;
 }
 
 export async function TailOwner(root, qs:ITailOwner):Promise<TailOwnerStruct> {
-    base.uri = fxmlUrl + 'TailOwner';
-    base.qs = qs;
-    return (await rp.get(base)).TailOwnerResult;
+    return (await flightAwareGateway(qs, 'TailOwner')).TailOwnerResult;
 }
 
 export async function WeatherConditions(root, qs:IWeatherConditions):Promise<WeatherConditionsArrayStruct> {
-    base.uri = fxmlUrl + 'WeatherConditions';
-    base.qs = qs;
-    return (await rp.get(base)).WeatherConditionsResult;
+    return (await flightAwareGateway(qs, 'WeatherConditions')).WeatherConditionsResult;
 }
 
 export async function WeatherForecast(root, qs:IWeatherForecast):Promise<WeatherForecastStruct> {
-    base.uri = fxmlUrl + 'WeatherForecast';
-    base.qs = qs;
-    return (await rp.get(base)).WeatherForecastResult;
+    return (await flightAwareGateway(qs, 'WeatherForecast')).WeatherForecastResult;
 }
 
 export async function ZipcodeInfo(root, qs:IZipcodeInfo):Promise<ZipcodeInfoStruct> {
-    base.uri = fxmlUrl + 'ZipcodeInfo';
-    base.qs = qs;
-    return (await rp.get(base)).ZipcodeInfoResult;
+    return (await flightAwareGateway(qs, 'ZipcodeInfo')).ZipcodeInfoResult;
 }
