@@ -1,0 +1,32 @@
+{
+  "name": "flight-aware-server",
+  "version": "1.0.0",
+  "description": "an example of Graphql server with subscriptions using Flight-Aware API",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hodbauer/flight-aware-server.git"
+  },
+  "keywords": [
+    "graphql-subscriptions"
+  ],
+  "author": "Hod Bauer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hodbauer/flight-aware-server/issues"
+  },
+  "homepage": "https://github.com/hodbauer/flight-aware-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "graphql": "^0.11.7",
+    "graphql-server-express": "^1.1.3",
+    "graphql-tools": "^2.2.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
