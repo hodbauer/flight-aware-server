@@ -1,5 +1,5 @@
 import {AirportBoards, GetFlightTrack} from '../resolvers/flight-aware.api';
-import {pubsub} from '../pubsub-manager/index';
+import {pubsub, TRACK_UPDATED} from '../pubsub-manager/index';
 
 const INTERVAL = 20 * 1000;
 const AIRPORT = 'LLBG';
@@ -33,7 +33,7 @@ function initPolling() {
                 if (newFlight.tracks.length !== flight.track.length) {
                     console.log(`flight '${flight.id}' updated from ${flight.track.length} to ${newFlight.tracks.length} points`);
                     flight.track = newFlight.tracks;
-                    pubsub.publish('mock', {mock: flight.id});
+                    pubsub.publish(TRACK_UPDATED, {trackUpdated: {ident: id, track: flight.track}});
                 }
             }
         }

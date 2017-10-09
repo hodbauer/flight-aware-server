@@ -34,7 +34,7 @@ type Query {
 }
 
 type Subscription {
-  mock:String
+  trackUpdated(faFlightID:String!):Departure
 }
 `;
 
