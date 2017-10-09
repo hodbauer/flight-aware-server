@@ -57,7 +57,6 @@ async function flightAwareGateway<T>(qs:T, urlSuffix:string):Promise<any> {
     base.uri = fxmlUrl + urlSuffix;
     base.qs = qs;
     let result = await rp.get(base);
-    console.log({base, result});
     return result;
 }
 
