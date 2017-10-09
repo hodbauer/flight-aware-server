@@ -1,4 +1,5 @@
 import {AirportBoards, GetFlightTrack} from './flight-aware.api';
+import {updateFlightActivity} from '../db/index';
 
 export async function getDepartures(root, qs:{ airportCode:string }):Promise<any> {
     let departures = await AirportBoards(root, {airport_code: qs.airportCode, type: 'departures', filter: 'airline'});
@@ -10,4 +11,13 @@ export async function getDepartures(root, qs:{ airportCode:string }):Promise<any
     }
 
     return flights;
+}
+
+export async function shootingDownAirplane(root, args:{ faFlightID:string }):Promise<boolean> {
+    return new Promise<boolean>((resolve => {
+        setTimeout(() => {
+            let success = updateFlightActivity(args.faFlightID, false);
+            resolve(success);
+        }, 1000);
+    }));
 }

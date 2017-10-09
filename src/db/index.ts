@@ -15,6 +15,14 @@ export async function initDB() {
     initPolling();
 }
 
+export function updateFlightActivity(flightId:string, active:boolean):boolean {
+    if (DB[AIRPORT][flightId].active) {
+        DB[AIRPORT][flightId].active = active;
+        return true;
+    }
+    return false;
+}
+
 function initFlight(flightId:string):void {
     DB[AIRPORT][flightId] = {
         active: true,

@@ -36,6 +36,10 @@ type Query {
 type Subscription {
   trackUpdated(faFlightID:String!):Departure
 }
+
+type Mutation {
+  shootingDownAirplane(faFlightID:String!):Boolean
+}
 `;
 
 export const schema = makeExecutableSchema({typeDefs, resolvers});
