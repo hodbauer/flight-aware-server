@@ -6,6 +6,7 @@ import {createServer} from 'http';
 import {execute, subscribe} from 'graphql';
 import {SubscriptionServer} from 'subscriptions-transport-ws';
 import {schema} from './src/schema';
+import {initDB} from './src/db';
 
 const PORT = 4000;
 const server = express();
@@ -22,6 +23,7 @@ server.use('/graphiql', graphiqlExpress({
 
 ws.listen(PORT, async () => {
     console.log(`GraphQL Server is now running on http://localhost:${PORT}`);
+    await initDB();
 
     new SubscriptionServer({
         execute,

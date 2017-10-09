@@ -1,5 +1,5 @@
 export const customTypeDefs = `
-type Departures {
+type Departure {
   ident:String
   track:[TrackStruct]
 }

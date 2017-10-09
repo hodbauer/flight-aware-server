@@ -30,7 +30,11 @@ type Query {
     WeatherForecast(airport_code:String!, weather_date:Int, return_nearby_weather:Boolean):WeatherForecastStruct
     ZipcodeInfo(zipcode:String!):ZipcodeInfoStruct
     
-    getDepartures(airportCode:String!):[Departures]
+    getDepartures(airportCode:String!):[Departure]
+}
+
+type Subscription {
+  mock:String
 }
 `;
 
